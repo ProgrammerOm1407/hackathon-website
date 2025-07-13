@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Disable Next.js dev tools menu
-  devIndicators: {
-    buildActivity: false,
-    buildActivityPosition: 'bottom-right',
-  },
+  devIndicators: false,
   // Disable React Strict Mode for cleaner development
   reactStrictMode: false,
   eslint: {

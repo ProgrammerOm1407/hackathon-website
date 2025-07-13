@@ -3,34 +3,58 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, Trophy, Users, Code, Zap, Star, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import EventTimeline from "@/components/EventTimeline"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black/20 backdrop-blur-md z-50 border-b border-white/10">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Code className="h-8 w-8 text-cyan-400" />
-            <span className="text-2xl font-bold text-white">HackFest 2025</span>
+      <nav className="fixed top-0 w-full bg-gradient-to-r from-black/90 via-purple-900/80 to-black/90 backdrop-blur-xl z-50 border-b border-white/20 shadow-2xl">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-3 group cursor-pointer">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg blur-sm opacity-75 group-hover:opacity-100 transition-opacity"></div>
+              <Code className="h-10 w-10 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
+            </div>
+            <div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-white to-blue-400 bg-clip-text text-transparent">
+                HackFest
+              </span>
+              <span className="text-lg font-semibold text-white/90 ml-1">2025</span>
+            </div>
           </div>
-          <div className="hidden md:flex space-x-6">
-            <a href="#about" className="text-white/80 hover:text-white transition-colors">
-              About
+          
+          <div className="hidden md:flex space-x-8">
+            <a href="#about" className="relative text-white/80 hover:text-white transition-colors duration-300 font-medium group">
+              <span className="relative z-10">About</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:w-full transition-all duration-300"></div>
             </a>
-            <a href="#schedule" className="text-white/80 hover:text-white transition-colors">
-              Schedule
+            <a href="#schedule" className="relative text-white/80 hover:text-white transition-colors duration-300 font-medium group">
+              <span className="relative z-10">Schedule</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:w-full transition-all duration-300"></div>
             </a>
-            <a href="#rules" className="text-white/80 hover:text-white transition-colors">
-              Rules
+            <a href="#problem" className="relative text-white/80 hover:text-white transition-colors duration-300 font-medium group">
+              <span className="relative z-10">Problem</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:w-full transition-all duration-300"></div>
             </a>
-            <a href="#prizes" className="text-white/80 hover:text-white transition-colors">
-              Prizes
+            <a href="#rules" className="relative text-white/80 hover:text-white transition-colors duration-300 font-medium group">
+              <span className="relative z-10">Rules</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:w-full transition-all duration-300"></div>
+            </a>
+            <a href="#prizes" className="relative text-white/80 hover:text-white transition-colors duration-300 font-medium group">
+              <span className="relative z-10">Prizes</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:w-full transition-all duration-300"></div>
+            </a>
+            <a href="#terms" className="relative text-white/80 hover:text-white transition-colors duration-300 font-medium group">
+              <span className="relative z-10">Terms</span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:w-full transition-all duration-300"></div>
             </a>
           </div>
+          
           <Link href="/register">
-            <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105">
-              Register Now
+            <Button className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700 text-white font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25 border border-cyan-400/30 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              <span className="relative z-10">Register Now</span>
             </Button>
           </Link>
         </div>
@@ -52,22 +76,17 @@ export default function HomePage() {
               <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
                 Join the ultimate coding challenge where innovation meets creativity. Build, compete, and earn certificates!
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <div className="flex justify-center items-center mb-12">
                 <Link href="/register">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700 text-white font-bold text-xl px-12 py-6 rounded-full transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-cyan-500/25 border-2 border-cyan-400/30 relative overflow-hidden group"
                   >
-                    Register Now - ₹50 <ArrowRight className="ml-2 h-5 w-5" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <span className="relative z-10">Register Now - ₹50</span>
+                    <ArrowRight className="ml-3 h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                   </Button>
                 </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full bg-transparent"
-                >
-                  Learn More
-                </Button>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
                 <div className="text-center">
@@ -136,7 +155,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-white/80">
-                  All participants will receive a certificate of participation. Top teams will get special recognition and internship/mentorship opportunities.
+                  All participants will receive a certificate of participation. Top teams will get special recognition.
                 </p>
               </CardContent>
             </Card>
@@ -144,54 +163,161 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Schedule Section */}
-      <section id="schedule" className="py-16 px-4 bg-black/20">
+      {/* Problem Statement Section */}
+      <section id="problem" className="py-16 px-4 bg-gradient-to-br from-slate-900/80 via-purple-900/60 to-indigo-900/80">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">Event Schedule</h2>
-            <p className="text-xl text-white/80">48 hours of non-stop coding and innovation</p>
+            <h2 className="text-4xl font-bold text-white mb-4">Problem Statement</h2>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              Build any type of website that solves a real-world problem or showcases your creativity
+            </p>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4 p-6 bg-white/10 backdrop-blur-md rounded-lg border border-white/20">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
-                    <Calendar className="h-8 w-8 text-white" />
+          
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
+            {/* Problem Statement Card */}
+            <Card className="bg-gradient-to-br from-cyan-600/80 via-blue-600/70 to-purple-600/70 backdrop-blur-xl border-cyan-400/40 text-white shadow-2xl">
+              <CardHeader>
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center">
+                    <Code className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-2xl">Build Any Website</CardTitle>
+                    <CardDescription className="text-cyan-200">No Specific Theme Required</CardDescription>
                   </div>
                 </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-semibold text-white">Registration Deadline</h3>
-                  <p className="text-white/80">Last day to register for the hackathon</p>
-                  <p className="text-cyan-400 font-medium">July 18, 2025 - 11:59 PM (Friday)</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <h4 className="text-lg font-semibold text-cyan-300">What You Can Build:</h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>E-commerce platforms</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Social media applications</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Educational platforms</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Healthcare applications</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Entertainment websites</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Utility tools & dashboards</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Creative portfolios</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Any innovative web solution</span>
+                    </li>
+                  </ul>
                 </div>
-              </div>
-              <div className="flex items-center space-x-4 p-6 bg-white/10 backdrop-blur-md rounded-lg border border-white/20">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                    <Code className="h-8 w-8 text-white" />
+              </CardContent>
+            </Card>
+
+            {/* Submission Requirements Card */}
+            <Card className="bg-gradient-to-br from-purple-600/80 via-pink-600/70 to-red-600/70 backdrop-blur-xl border-purple-400/40 text-white shadow-2xl">
+              <CardHeader>
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-lg flex items-center justify-center">
+                    <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <CardTitle className="text-2xl">Submission Requirements</CardTitle>
+                    <CardDescription className="text-purple-200">Must Submit Both Links</CardDescription>
                   </div>
                 </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-semibold text-white">Day 1 - Event Start</h3>
-                  <p className="text-white/80">Opening ceremony, team formation, and project ideation</p>
-                  <p className="text-blue-400 font-medium">July 19, 2025 - 9:00 AM (Saturday)</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <h4 className="text-lg font-semibold text-purple-300">Required Submissions:</h4>
+                  <ul className="space-y-3 text-white/90">
+                    <li className="flex items-start">
+                      <span className="text-purple-400 font-bold mr-2">🔗</span>
+                      <div>
+                        <span className="font-semibold">Code Repository Link:</span>
+                        <p className="text-sm text-white/70 mt-1">GitHub, GitLab, or any public repository containing your source code</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-purple-400 font-bold mr-2">🌐</span>
+                      <div>
+                        <span className="font-semibold">Live Preview Link:</span>
+                        <p className="text-sm text-white/70 mt-1">Deployed website URL (Netlify, Vercel, Heroku, etc.)</p>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-              </div>
-              <div className="flex items-center space-x-4 p-6 bg-white/10 backdrop-blur-md rounded-lg border border-white/20">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                    <Trophy className="h-8 w-8 text-white" />
+                
+                <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mt-4">
+                  <h4 className="text-lg font-bold text-yellow-400 mb-2">⚠️ Important</h4>
+                  <p className="text-white/90 text-sm">
+                    Both links must be accessible and working. Incomplete submissions will be disqualified.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Evaluation Criteria */}
+          <div className="mt-12">
+            <Card className="bg-gradient-to-br from-emerald-600/80 via-teal-600/70 to-cyan-600/70 backdrop-blur-xl border-emerald-400/40 text-white shadow-2xl">
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <CardTitle className="text-3xl">Evaluation Criteria</CardTitle>
+                <CardDescription className="text-emerald-200 text-lg">How your project will be judged</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <div className="text-center p-4 bg-white/10 rounded-lg backdrop-blur-sm">
+                    <div className="text-2xl font-bold text-emerald-400 mb-2">30%</div>
+                    <h4 className="font-semibold mb-2">Innovation & Creativity</h4>
+                    <p className="text-sm text-white/70">Unique approach and creative solutions</p>
+                  </div>
+                  <div className="text-center p-4 bg-white/10 rounded-lg backdrop-blur-sm">
+                    <div className="text-2xl font-bold text-emerald-400 mb-2">25%</div>
+                    <h4 className="font-semibold mb-2">Technical Implementation</h4>
+                    <p className="text-sm text-white/70">Code quality and technical excellence</p>
+                  </div>
+                  <div className="text-center p-4 bg-white/10 rounded-lg backdrop-blur-sm">
+                    <div className="text-2xl font-bold text-emerald-400 mb-2">25%</div>
+                    <h4 className="font-semibold mb-2">Problem Solving</h4>
+                    <p className="text-sm text-white/70">How well the solution addresses the problem</p>
+                  </div>
+                  <div className="text-center p-4 bg-white/10 rounded-lg backdrop-blur-sm">
+                    <div className="text-2xl font-bold text-emerald-400 mb-2">20%</div>
+                    <h4 className="font-semibold mb-2">Presentation Quality</h4>
+                    <p className="text-sm text-white/70">Demo presentation and documentation</p>
                   </div>
                 </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-semibold text-white">Day 2 - Event End</h3>
-                  <p className="text-white/80">Project demos, judging, and award ceremony</p>
-                  <p className="text-purple-400 font-medium">July 20, 2025 - 6:00 PM (Sunday)</p>
-                </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
+      </section>
+
+      {/* Live Timeline Section */}
+      <section id="schedule">
+        <EventTimeline />
       </section>
 
       {/* Rules Section */}
@@ -306,7 +432,7 @@ export default function HomePage() {
                     <svg className="h-6 w-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="font-medium">Digital & Physical Copy</span>
+                    <span className="font-medium">Digital Copy</span>
                   </div>
                 </div>
               </CardContent>
@@ -380,6 +506,109 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Terms and Conditions Section */}
+      <section id="terms" className="py-16 px-4 bg-black/20">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">Terms & Conditions</h2>
+            <p className="text-xl text-white/80">Please read carefully before registering</p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white">
+              <CardContent className="p-8 space-y-6">
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-cyan-400 mb-4">Registration & Payment</h3>
+                  <ul className="space-y-3 text-white/90">
+                    <li className="flex items-start">
+                      <span className="text-red-400 font-bold mr-2">⚠</span>
+                      <span><strong>Refund Policy:</strong> Registration fees are non-refundable except in case of event cancellation by organizers.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Registration is confirmed only after successful payment.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Registration fees: Solo participants ₹50, Team participants ₹70.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>All payments must be completed before the registration deadline.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-cyan-400 mb-4">Event Participation</h3>
+                  <ul className="space-y-3 text-white/90">
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Participants must be present for the entire duration of the event.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>All code must be written during the hackathon period.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Use of pre-existing code is strictly prohibited.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Teams must submit their projects before the deadline.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-cyan-400 mb-4">Code of Conduct</h3>
+                  <ul className="space-y-3 text-white/90">
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>All participants must maintain professional behavior.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Harassment or discrimination of any kind will not be tolerated.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Organizers reserve the right to disqualify participants for misconduct.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-cyan-400 mb-4">Liability & Disclaimers</h3>
+                  <ul className="space-y-3 text-white/90">
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Organizers are not responsible for any technical issues during the event.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Participants are responsible for their own equipment and internet connection.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-cyan-400 font-bold mr-2">•</span>
+                      <span>Event schedule may be subject to change with prior notice.</span>
+                    </li>
+                  </ul>
+                </div> */}
+
+                <div className="bg-red-500/20 border border-red-500/30 rounded-lg p-4 mt-6">
+                  <h4 className="text-lg font-bold text-red-400 mb-2">Important Notice</h4>
+                  <p className="text-white/90">
+                    By registering for this event, you acknowledge that you have read, understood, and agree to all terms and conditions stated above. 
+                    <strong className="text-red-400"> Refunds will only be provided if the event is canceled by the organizers.</strong>
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto text-center">
@@ -400,7 +629,7 @@ export default function HomePage() {
               </Link>
             </div>
             <p className="text-white/60 mt-4 text-sm">
-              Registration deadline: July 18th, 2025. Limited spots available!
+              Registration deadline: July 25th, 2025. Limited spots available!
             </p>
           </div>
         </div>
