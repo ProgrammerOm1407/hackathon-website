@@ -636,13 +636,58 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-white/10">
-        <div className="container mx-auto text-center">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <Code className="h-6 w-6 text-cyan-400" />
-            <span className="text-xl font-bold text-white">HackFest 2025</span>
+      <footer className="py-12 px-4 border-t border-white/10 bg-black/20">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 items-center">
+            {/* Logo and Description */}
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start space-x-2 mb-4">
+                <Code className="h-8 w-8 text-cyan-400" />
+                <span className="text-2xl font-bold text-white">HackFest 2025</span>
+              </div>
+              <p className="text-white/70 text-sm">
+                The premier hackathon event bringing together the brightest minds in technology.
+              </p>
+            </div>
+
+            {/* Contact Information */}
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
+              <div className="space-y-2">
+                <div className="flex items-center justify-center space-x-2">
+                  <svg className="h-5 w-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <a href="tel:+917058653500" className="text-white/80 hover:text-cyan-400 transition-colors">
+                    +91 7058653500
+                  </a>
+                </div>
+                <div className="flex items-center justify-center space-x-2">
+                  <svg className="h-5 w-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <a href="mailto:triowavedigital@gmail.com" className="text-white/80 hover:text-cyan-400 transition-colors">
+                    triowavedigital@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="text-center md:text-right">
+              <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+              <div className="space-y-2">
+                <a href="#about" className="block text-white/70 hover:text-cyan-400 transition-colors">About</a>
+                <a href="#problem" className="block text-white/70 hover:text-cyan-400 transition-colors">Problem</a>
+                <a href="#schedule" className="block text-white/70 hover:text-cyan-400 transition-colors">Schedule</a>
+                <a href="#terms" className="block text-white/70 hover:text-cyan-400 transition-colors">Terms</a>
+              </div>
+            </div>
           </div>
-          <p className="text-white/60">© 2025 HackFest. All rights reserved. Built with passion for innovation.</p>
+          
+          <div className="border-t border-white/10 mt-8 pt-8 text-center">
+            <p className="text-white/60">© 2025 HackFest. All rights reserved. Built with passion for innovation.</p>
+          </div>
         </div>
       </footer>
     </div>
