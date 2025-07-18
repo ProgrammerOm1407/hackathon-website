@@ -106,7 +106,7 @@ export default function HomePage() {
                   <div className="text-white/60">Teams</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-400">₹50/₹70</div>
+                  <div className="text-3xl font-bold text-blue-400">₹50</div>
                   <div className="text-white/60">Registration Fee</div>
                 </div>
               </div>

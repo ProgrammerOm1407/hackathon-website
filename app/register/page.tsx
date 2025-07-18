@@ -20,8 +20,6 @@ interface FormData {
   year: string
   experience: string
   skills: string
-  teamName: string
-  teamSize: string
   projectIdea: string
   agreeTerms: boolean
 }
@@ -35,8 +33,6 @@ export default function RegisterPage() {
     year: "",
     experience: "",
     skills: "",
-    teamName: "",
-    teamSize: "1",
     projectIdea: "",
     agreeTerms: false,
   })
@@ -47,34 +43,27 @@ export default function RegisterPage() {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
-  const getRegistrationFee = () => {
-    return formData.teamSize === "1" ? 50 : 70
-  }
+  const getRegistrationFee = () => 50
 
   const handleSubmit = async () => {
     if (!formData.agreeTerms) {
       alert("Please agree to the terms and conditions")
       return
     }
-
     // Validate required fields (marked with * in Google Form)
-    if (!formData.fullName || !formData.email || !formData.phone || !formData.college || !formData.teamName) {
-      alert("Please fill in all required fields: Name, Email, Phone, College/Organization, and Team Name")
+    if (!formData.fullName || !formData.email || !formData.phone || !formData.college) {
+      alert("Please fill in all required fields: Name, Email, Phone, and College/Organization")
       return
     }
-
     setIsLoading(true)
-
     try {
       // Google Forms submission URL
       const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScTU9Wwsi12H77ZsOOQpJutn5-cMg-KuTQAgmF3JaDSgQtq9w/formResponse"
-      
       // Submit to Google Forms using a reliable method
       const form = document.createElement('form')
       form.method = 'POST'
       form.action = googleFormUrl
       form.style.display = 'none'
-
       // Add all form fields
       Object.entries({
         "entry.2092238618": formData.fullName,
@@ -84,8 +73,6 @@ export default function RegisterPage() {
         "entry.58272716": formData.year || "",
         "entry.1509200465": formData.experience || "",
         "entry.138192442": formData.skills || "",
-        "entry.921021279": formData.teamName || "",
-        "entry.1441035966": formData.teamSize,
         "entry.1021395116": formData.projectIdea || "",
         "entry.2109138769": formData.agreeTerms ? "Yes" : "No"
       }).forEach(([name, value]) => {
@@ -95,20 +82,11 @@ export default function RegisterPage() {
         input.value = value
         form.appendChild(input)
       })
-
-      // Submit the form directly to ensure it works
       document.body.appendChild(form)
       form.submit()
       document.body.removeChild(form)
-
-      console.log("Form submitted successfully to Google Forms")
-      
-      // Show success message
       setIsSubmitted(true)
-      console.log("Registration submitted successfully")
-      
     } catch (error) {
-      console.error("Registration error:", error)
       alert("Registration failed. Please try again or contact support.")
     } finally {
       setIsLoading(false)
@@ -145,7 +123,6 @@ export default function RegisterPage() {
               <div className="text-left space-y-2 text-white/80">
                 <p><strong>Name:</strong> {formData.fullName}</p>
                 <p><strong>Email:</strong> {formData.email}</p>
-                <p><strong>Team Size:</strong> {formData.teamSize} member{formData.teamSize !== "1" ? "s" : ""}</p>
                 <p><strong>Registration Fee:</strong> ₹{getRegistrationFee()}</p>
               </div>
             </div>
@@ -193,7 +170,7 @@ export default function RegisterPage() {
             </p>
             <div className="flex justify-center items-center space-x-4 mb-6">
               <Badge className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-300 border-cyan-500/30">
-                Solo: ₹50 | Team: ₹70
+                Solo: ₹50
               </Badge>
               <Badge className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-300 border-green-500/30">
                 Early Bird Offer
@@ -241,7 +218,6 @@ export default function RegisterPage() {
                       />
                     </div>
                   </div>
-
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="phone" className="text-white">
@@ -269,7 +245,6 @@ export default function RegisterPage() {
                       />
                     </div>
                   </div>
-
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="year" className="text-white">
@@ -304,7 +279,6 @@ export default function RegisterPage() {
                       </Select>
                     </div>
                   </div>
-
                   <div>
                     <Label htmlFor="skills" className="text-white">
                       Skills & Technologies
@@ -318,37 +292,6 @@ export default function RegisterPage() {
                       rows={3}
                     />
                   </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="teamName" className="text-white">
-                        Team Name *
-                      </Label>
-                      <Input
-                        id="teamName"
-                        value={formData.teamName}
-                        onChange={(e) => handleInputChange("teamName", e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-                        placeholder="Enter your team name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="teamSize" className="text-white">
-                        Team Size
-                      </Label>
-                      <Select value={formData.teamSize} onValueChange={(value) => handleInputChange("teamSize", value)}>
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                          <SelectValue placeholder="Select team size" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1">Solo (1 member)</SelectItem>
-                          <SelectItem value="2">Team (2 members)</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
                   <div>
                     <Label htmlFor="projectIdea" className="text-white">
                       Project Idea (Optional)
@@ -362,7 +305,6 @@ export default function RegisterPage() {
                       rows={3}
                     />
                   </div>
-
                   {/* Terms and Conditions */}
                   <div className="flex items-start space-x-2">
                     <Checkbox
@@ -390,7 +332,6 @@ export default function RegisterPage() {
                 </CardContent>
               </Card>
             </div>
-
             {/* Registration Summary */}
             <div className="lg:col-span-1">
               <Card className="bg-white/10 backdrop-blur-md border-white/20 sticky top-8">
@@ -403,8 +344,8 @@ export default function RegisterPage() {
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
                     <div className="flex justify-between text-white">
-                      <span>Team Size</span>
-                      <span>{formData.teamSize} member{formData.teamSize !== "1" ? "s" : ""}</span>
+                      <span>Registration Type</span>
+                      <span>Solo (1 member)</span>
                     </div>
                     <div className="flex justify-between text-green-400">
                       <span>Registration Fee</span>
@@ -417,17 +358,15 @@ export default function RegisterPage() {
                       </div>
                     </div>
                   </div>
-
                   <div className="space-y-3 pt-4">
                     <div className="flex items-center text-white/80 text-sm">
                       <CheckCircle className="h-4 w-4 mr-2 text-green-400" />
-                      Certificate for all participants
+                      Certificate for the participant
                     </div>
                     <div className="text-white/60 text-xs">
                       Payment can be completed after form submission via Google Pay, UPI, or bank transfer.
                     </div>
                   </div>
-
                   <Button
                     onClick={handleSubmit}
                     disabled={
@@ -437,13 +376,11 @@ export default function RegisterPage() {
                   >
                     {isLoading ? "Submitting..." : "Submit Registration"}
                   </Button>
-
                   <div className="text-center text-white/60 text-xs">
                     By clicking "Submit Registration", you agree to our terms and conditions
                   </div>
                 </CardContent>
               </Card>
-
               {/* What's Included */}
               <Card className="bg-white/10 backdrop-blur-md border-white/20 mt-6">
                 <CardHeader>
